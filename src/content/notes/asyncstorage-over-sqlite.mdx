@@ -1,0 +1,24 @@
+export const meta = {
+  title: "Decision: AsyncStorage over SQLite",
+  date: "2026-10-12",
+  summary: "DUMMY: why a key-value store was enough for v1 of the finance app.",
+  tags: ["decision", "react-native"],
+};
+
+## Context
+
+The finance tracker stores a few hundred small records, offline, on one device.
+
+## Options
+
+1. **AsyncStorage**: trivial API, zero setup.
+2. **SQLite**: queries and migrations, more code.
+
+## Decision
+
+AsyncStorage. The data is small and I can swap it later behind one storage module.
+
+## Consequences
+
+- Fast to ship.
+- Reporting over large histories will be slower; revisit when a backend arrives.
