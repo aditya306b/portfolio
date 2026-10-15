@@ -44,9 +44,12 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
         )}
         <div className="mt-8">
           <Block title="Problem"><p className="leading-8">{p.problem}</p></Block>
+          {p.constraints.length > 0 && (
           <Block title="Constraints">
             <ul className="list-disc space-y-1 pl-6">{p.constraints.map((c) => <li key={c}>{c}</li>)}</ul>
           </Block>
+          )}
+          {p.decisions.length > 0 && (
           <Block title="Decisions">
             <ul className="space-y-4">
               {p.decisions.map((d) => (
@@ -57,6 +60,7 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
               ))}
             </ul>
           </Block>
+          )}
           <Block title="Outcome"><p className="leading-8">{p.outcome}</p></Block>
           {p.link && (
             <Block title="Link">
